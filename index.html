@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1> Bienvenidos a la página de registro de usuarios</h1>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"
+    ></script>
+
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"
+    ></script>
+  </head>
+  <body>
+    <h1>Bienvenidos a la página de registro de usuarios</h1>
     <form action="signup2.html">
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Ingrese su email"><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Ingrese su contraseña"><br>
-        <input type="submit" value="Registrar"><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Ingrese su email" /><br />
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Ingrese su contraseña"
+      /><br />
+      <input type="submit" value="Registrar" /><br />
     </form>
-</body>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyByPDuc3yxbAW2pG1M0_eyhakID2K0q2h4",
+        authDomain: "listamusica-8e315.firebaseapp.com",
+        projectId: "listamusica-8e315",
+        storageBucket: "listamusica-8e315.appspot.com",
+        messagingSenderId: "1038951966454",
+        appId: "1:1038951966454:web:821a0dc71ce59d42822ed7",
+      };
+
+      const email = "genesis.guachamin@epn.edu.ec";
+      const password = "1234567";
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
+    </script>
+  </body>
 </html>
